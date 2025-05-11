@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: signal-spammer
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: WEBHOOK_URL
+        value: https://hook.finandy.com/yO3KJnXGQbpKnkbLrlUK
+      - key: INTERVAL_MS
+        value: 2000
+    autoDeploy: true

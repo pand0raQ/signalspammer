@@ -1,0 +1,20 @@
+{
+  "name": "signal-spammer",
+  "version": "1.0.0",
+  "description": "Script that sends signals to a webhook URL at regular intervals",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webhook",
+    "signals"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1"
+  }
+}
