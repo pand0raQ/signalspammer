@@ -1,6 +1,6 @@
 # Signal Spammer
 
-A simple Node.js application that sends a predefined JSON payload to a webhook URL at regular intervals (every 4 seconds by default).
+A robust Node.js application that sends a predefined JSON payload to a webhook URL at regular intervals (every 4 seconds by default). Built with reliability features to ensure continuous operation even in challenging environments.
 
 ## Configuration
 
@@ -9,6 +9,26 @@ The application can be configured using environment variables:
 - `WEBHOOK_URL`: The URL to send the payload to (default: https://hook.finandy.com/yO3KJnXGQbpKnkbLrlUK)
 - `INTERVAL_MS`: The interval between requests in milliseconds (default: 4000)
 - `PORT`: The port for the HTTP server to listen on (default: 3000)
+
+## Reliability Features
+
+This application includes several features to ensure it keeps running reliably:
+
+1. **Automatic Recovery**: The application monitors its own health and automatically restarts the sending interval if no successful requests are detected for 2 minutes.
+
+2. **Exponential Backoff**: If multiple consecutive failures occur, the application will implement exponential backoff to avoid overwhelming the target server.
+
+3. **HTTP Endpoints**:
+   - `/` - Basic status information
+   - `/health` - Simple health check endpoint
+   - `/stats` - Detailed statistics about requests and memory usage
+   - `/restart` - Manually trigger a restart of the sending interval
+
+4. **Error Handling**: Comprehensive error handling prevents the application from crashing due to network issues or other errors.
+
+5. **Memory Monitoring**: Periodic logging of memory usage helps identify potential memory leaks.
+
+6. **Connection Management**: Uses HTTP keep-alive connections for better performance and reliability.
 
 ## Local Development
 
