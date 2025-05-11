@@ -1,5 +1,6 @@
 const axios = require('axios');
 require('dotenv').config();
+const http = require('http');
 
 // Configuration
 const WEBHOOK_URL = process.env.WEBHOOK_URL || 'https://hook.finandy.com/yO3KJnXGQbpKnkbLrlUK';
@@ -36,13 +37,40 @@ console.log(`Starting to send messages to ${WEBHOOK_URL} every ${INTERVAL_MS}ms.
 sendMessage(); // Send first message immediately
 setInterval(sendMessage, INTERVAL_MS);
 
+// Create a simple HTTP server to satisfy Render's port binding requirement
+const PORT = process.env.PORT || 3000;
+const server = http.createServer((req, res) => {
+  if (req.url === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ status: 'ok', message: 'Signal spammer is running' }));
+  } else {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      status: 'running',
+      message: 'Signal spammer is active',
+      target: WEBHOOK_URL,
+      interval: `${INTERVAL_MS}ms`
+    }));
+  }
+});
+
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
+
 // Handle graceful shutdown
 process.on('SIGINT', () => {
   console.log('Received SIGINT. Shutting down gracefully...');
-  process.exit(0);
+  server.close(() => {
+    console.log('HTTP server closed');
+    process.exit(0);
+  });
 });
 
 process.on('SIGTERM', () => {
   console.log('Received SIGTERM. Shutting down gracefully...');
-  process.exit(0);
+  server.close(() => {
+    console.log('HTTP server closed');
+    process.exit(0);
+  });
 });

@@ -8,6 +8,7 @@ The application can be configured using environment variables:
 
 - `WEBHOOK_URL`: The URL to send the payload to (default: https://hook.finandy.com/yO3KJnXGQbpKnkbLrlUK)
 - `INTERVAL_MS`: The interval between requests in milliseconds (default: 2000)
+- `PORT`: The port for the HTTP server to listen on (default: 3000)
 
 ## Local Development
 

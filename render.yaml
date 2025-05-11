@@ -9,4 +9,6 @@ services:
         value: https://hook.finandy.com/yO3KJnXGQbpKnkbLrlUK
       - key: INTERVAL_MS
         value: 2000
+      - key: PORT
+        value: 10000
     autoDeploy: true
