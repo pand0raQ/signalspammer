@@ -8,7 +8,7 @@ services:
       - key: WEBHOOK_URL
         value: https://hook.finandy.com/yO3KJnXGQbpKnkbLrlUK
       - key: INTERVAL_MS
-        value: 2000
+        value: 4000
       - key: PORT
         value: 10000
     autoDeploy: true

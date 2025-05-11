@@ -4,7 +4,7 @@ const http = require('http');
 
 // Configuration
 const WEBHOOK_URL = process.env.WEBHOOK_URL || 'https://hook.finandy.com/yO3KJnXGQbpKnkbLrlUK';
-const INTERVAL_MS = process.env.INTERVAL_MS || 2000; // 2 seconds by default
+const INTERVAL_MS = process.env.INTERVAL_MS || 4000; // 4 seconds by default
 
 // Message payload
 const message = {

@@ -1,13 +1,13 @@
 # Signal Spammer
 
-A simple Node.js application that sends a predefined JSON payload to a webhook URL at regular intervals (every 2 seconds by default).
+A simple Node.js application that sends a predefined JSON payload to a webhook URL at regular intervals (every 4 seconds by default).
 
 ## Configuration
 
 The application can be configured using environment variables:
 
 - `WEBHOOK_URL`: The URL to send the payload to (default: https://hook.finandy.com/yO3KJnXGQbpKnkbLrlUK)
-- `INTERVAL_MS`: The interval between requests in milliseconds (default: 2000)
+- `INTERVAL_MS`: The interval between requests in milliseconds (default: 4000)
 - `PORT`: The port for the HTTP server to listen on (default: 3000)
 
 ## Local Development
